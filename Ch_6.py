@@ -90,5 +90,82 @@ for name in favorite_languages.keys():
         print(f"Hey {name.title()}, best on hurry up and take the poll.")
 
 
+print('\nExercise 6.7 People')
+print('=========================')
+person1 = {'First Name' : 'Steve', 'Last Name' : 'Lando', 'Country' : 'United States'}
+##print(person)
+##for i, j in person1.items():
+##    print(i + ' : ' + j)
+person2 = {'First Name' : 'John', 'Last Name' : 'Doe', 'Country' : 'England'}
+person3 = {'First Name' : 'Mario', 'Last Name' : 'Cabinari', 'Country' : 'Italy'}
+people = [person1, person2, person3]
+##print(people)
+for i in people:
+    print(i)
+    
+print('\nExercise 6.8 Pets')
+print('=========================')
+pet1 = {'Type' : 'dog', 'Owner' : 'Ronald'}
+pet2 = {'Type' : 'cat', 'Owner' : 'Jackie'}
+pet3 = {'Type' : 'hamster', 'Owner' : 'Antoinette'}
+pets = [pet1, pet2, pet3]
+
+for animal in pets:
+    print(animal['Owner'] + " has a pet " + animal['Type'])
 
 
+print('\nExercise 6.9 Favorite Places')
+print('=========================')
+favorite_places = {'Bob' : ['Italy', 'London', 'Paris'], 'Anna' : ['Chicago', 'Los Angeles'],
+                   'Reggie' : ['China', 'Vietnam', 'Japan']}
+
+
+for name, placeS in favorite_places.items():
+    print(f"{name.title()}'s favorite places to visit are:")
+    for place in placeS:
+        print(f"\t{place.title()}")
+
+
+
+print('\nExercise 6.10 Favorite Numbers Part 2')
+print('=========================')
+favnums = {'George' : [50, 23], 'Leo' : [26, 99, 69, 1], 'Kobe' : [8, 24], 'Lebron' : [32]}
+print('The following are favorite numbers of people!')
+for i, j in favnums.items():
+    if len(j) < 2:                          # Only works for lists or strings, would not work for integers
+        print(f"{i.title()}'s favorite number is: ")
+        for p in j:
+            print(f"\t" + str(p))
+    elif len(j) >  1:
+        print(f"{i.title()}'s favorite numbers are: ")
+        for p in j:
+            print(f"\t" + str(p))
+    
+
+print('\nExercise 6.11 Cities')
+print('=========================')
+# Creating a dictionary that includes holds a set of dictionaries (keys with multipple values)
+cities = {'Mumbai' :
+          {'Country' : 'India',
+           'Population' : 12478447,
+           'Fact' : 'World’s most expensive house is in Mumbai'},
+          'Los Angeles' :
+          {'Country' : 'United States of America',
+           'Population' : 3979576,
+           'Fact' : 'Home of Hollywood movies'},
+          'Dubai' :
+          {'Country' : 'United Arab Emirates',
+           'Population' : 3390000,
+           'Fact' : 'Business hub of Western Asia'}
+          }
+
+# Challenging step
+for city, data in cities.items():       # Calling the two values from the cities' dictionaries
+    print(f"City: {city.title()}")      # Print the title of the first value and capitalize it
+    coun = f"{data['Country']}"         # Recalling the 'Country' key from the "data" dictionary within Cities
+    pop = f"{data['Population']}"       # Recalling the 'Population' key from the "data" dictionary within Cities
+    faq = f"{data['Fact']}"             # Recalling the 'Fact' key from the "data" dictionary within Cities
+
+    print(f"\tCountry: {coun.title()}") # Print tab with a label, followed by the previous recall of coun
+    print(f"\tPopulation: {pop}")       # Print tab with a label, followed by the previous recall of pop
+    print(f"\tFact: {faq.title()}\n")   # Print tab with a label, followed by the previous recall of faq
