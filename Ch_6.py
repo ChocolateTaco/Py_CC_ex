@@ -163,7 +163,9 @@ cities = {'Mumbai' :
 for city, data in cities.items():       # Calling the two values from the cities' dictionaries
     print(f"City: {city.title()}")      # Print the title of the first value and capitalize it
     coun = f"{data['Country']}"         # Recalling the 'Country' key from the "data" dictionary within Cities
-    pop = f"{data['Population']}"       # Recalling the 'Population' key from the "data" dictionary within Cities
+##    pop = f"{data['Population']}"     # Recalling the 'Population' key from the "data" dictionary within Cities
+    pop = f"{data['Population']:,}"     # Recalling the 'Population' key and converted with commas 
+                                        #   from the "data" dictionary within Cities using f'{value:,}'
     faq = f"{data['Fact']}"             # Recalling the 'Fact' key from the "data" dictionary within Cities
 
     print(f"\tCountry: {coun.title()}") # Print tab with a label, followed by the previous recall of coun
