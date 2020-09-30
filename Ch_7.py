@@ -20,25 +20,60 @@ print('================================')
 
 
 # Exercises
-print('\n 7-1. Rental Car')
+# print('\n 7-1. Rental Car')
+# print('================================')
+# car = input("Hello, what rental car would you like? ")
+# print(f"Let me see if I can find you a {car}.")
+# 
+# print('\n 7-2. Restaurant Seating')
+# print('================================')
+# party = input("Hello, how many people are in your group? ")
+# if int(party) > 8:
+    # print("You will have to wait a few minutes for a table.")
+# else:
+    # print("Lucky for you, we have a table ready.")
+# 
+# 
+# print('\n 7-3. Multiples of Ten')
+# print('================================')
+# tens = input("Enter a number to determine if its a multiple of ten: ")
+# if int(tens) % 10 == 0:
+    # print(f"Your number {tens} is indeed a multiple of ten.")
+# else:
+    # print(f"{tens} is not a multiple of ten")
+# 
+# Using continua in a loop
+# counting.py
+# current_number = 0
+# while current_number < 10:
+#     current_number += 1
+#     if current_number % 2 == 0:
+#         continue
+
+#     print(current_number)
+
+print('\n 7-4. Pizza Toppings')
 print('================================')
-car = input("Hello, what rental car would you like? ")
-print(f"Let me see if I can find you a {car}.")
+prompt = "\nWhat kind of topping would you like? "
+prompt += "\n(Enter 'quit' when done.) "
 
-print('\n 7-2. Restaurant Seating')
+while True:
+    top = input(prompt)
+    if top == 'quit':
+        break
+    else:
+        print(f"{top.title()} will be added to the pizza order.")
+
+
+
+print('\n 7-5. Movie Tickets')
 print('================================')
-party = input("Hello, how many people are in your group? ")
-if int(party) > 8:
-    print("You will have to wait a few minutes for a table.")
-else:
-    print("Lucky for you, we have a table ready.")
+age = input("Welcome to the Movie Theater! \nHow old are you?: ")
 
-
-print('\n 7-3. Multiples of Ten')
-print('================================')
-tens = input("Enter a number to determine if its a multiple of ten: ")
-if int(tens) % 10 == 0:
-    print(f"Your number {tens} is indeed a multiple of ten.")
-else:
-    print(f"{tens} is not a multiple of ten")
-
+if age < 3:
+    print("Your ticket is free!")
+    elif age >= 3 and age < 12:
+        print("That will be $10.")
+        elif age >= 12:
+            print("That will be $15 oldie.")
+            
