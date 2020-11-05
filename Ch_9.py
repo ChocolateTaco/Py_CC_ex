@@ -172,3 +172,4 @@ class Privileges():
 
 rosa98 = Privileges("Rosa", "Line", "rosal_su", "female")
 rosa98.show_privileges()
+
