@@ -114,3 +114,61 @@ ice_stand.increment_number_served(20)
 # Using methods from child class (IceCreamStand)
 ice_stand.get_flavors()
 
+# class Privileges():
+#     def __init__(self):
+#         self.privs = ["can add post", "can delete post",
+#         "can add user", "can ban user"]
+
+#     def show_privileges(self):
+#         print(f"Admin privileges include:")
+#         for privilege in self.privs:
+#             print(f"- {privilege}")
+
+class Privileges():
+    def __init__(self, first_name, last_name, username, gender):
+        super().__init__(first_name, last_name, username, gender)        
+        self.privs = ["can add post", "can delete post",
+        "can add user", "can ban user"]
+
+    def show_privileges(self):
+        print(f"Admin privileges include:")
+        for privilege in self.privs:
+            print(f"- {privilege}")
+
+
+print("\n9-7. Admin\n==========================")
+class Admin(User):
+    """Represents a different user known as Administrator"""
+    def __init__(self, first_name, last_name, username, gender):
+        self.privilege = Privileges()
+        # self.privileges = ["can add post", "can delete post",
+        # "can add user", "can ban user"]
+
+    # def show_privileges(self):
+    #     print(f"Admin privileges include:")
+    #     for privilege in self.privileges:
+    #         print(f"- {privilege}")
+
+# lex97 = Admin("Lex", "Luthor", "LLKing_su", "male")
+
+# # Calling methods from parent class (User)
+# lex97.greet_user()
+# lex97.describe_user()
+# Calling methods from child class (Admin)
+# lex97.show_privileges()
+
+
+
+print("\n9-8. Privileges\n==========================")
+class Privileges():
+    def __init__(self, first_name, last_name, username, gender):
+        self.privs = ["can add post", "can delete post",
+        "can add user", "can ban user"]
+
+    def show_privileges(self):
+        print(f"Admin privileges include:")
+        for privilege in self.privs:
+            print(f"- {privilege}")
+
+rosa98 = Privileges("Rosa", "Line", "rosal_su", "female")
+rosa98.show_privileges()
