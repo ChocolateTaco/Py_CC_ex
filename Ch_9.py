@@ -87,3 +87,30 @@ u1.increment_login_attempts()
 u1.get_login_attempts()
 u1.reset_login_attempts()
 u1.get_login_attempts()
+
+
+print("\n9-6. Ice Cream Stand\n==========================")
+
+class IceCreamStand(Restaurant):
+    """Represents an ice cream stand version of a restaurant."""
+    def __init__(self, restaurant_name, cuisine_type):
+        """Initialize attributes of the parent class."""
+        # Note there is no self in the super
+        super().__init__(restaurant_name, cuisine_type)
+        self.flavors = ["chocolate", "strawberry", "vanilla"]
+
+    def get_flavors(self):
+        print(f"\nOur ice cream flavors include:")
+        for flavor in self.flavors:
+            print(f"- {flavor}")
+
+# Name of restaurant
+ice_stand = IceCreamStand("ColdStone", "Dessert")
+# Using methods from parent class (Restaurant)
+ice_stand.describe_restaurant()
+ice_stand.read_number_served()
+ice_stand.set_number_served(90)
+ice_stand.increment_number_served(20)
+# Using methods from child class (IceCreamStand)
+ice_stand.get_flavors()
+
