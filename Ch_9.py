@@ -124,23 +124,23 @@ ice_stand.get_flavors()
 #         for privilege in self.privs:
 #             print(f"- {privilege}")
 
-class Privileges():
-    def __init__(self, first_name, last_name, username, gender):
-        super().__init__(first_name, last_name, username, gender)        
-        self.privs = ["can add post", "can delete post",
-        "can add user", "can ban user"]
+# class Privileges():
+#     def __init__(self, first_name, last_name, username, gender):
+#         super().__init__(first_name, last_name, username, gender)        
+#         self.privs = ["can add post", "can delete post",
+#         "can add user", "can ban user"]
 
-    def show_privileges(self):
-        print(f"Admin privileges include:")
-        for privilege in self.privs:
-            print(f"- {privilege}")
+#     def show_privileges(self):
+#         print(f"Admin privileges include:")
+#         for privilege in self.privs:
+#             print(f"- {privilege}")
 
 
 print("\n9-7. Admin\n==========================")
 class Admin(User):
     """Represents a different user known as Administrator"""
     def __init__(self, first_name, last_name, username, gender):
-        self.privilege = Privileges()
+        self.privileges = Privileges
         # self.privileges = ["can add post", "can delete post",
         # "can add user", "can ban user"]
 
@@ -158,18 +158,24 @@ class Admin(User):
 # lex97.show_privileges()
 
 
-
 print("\n9-8. Privileges\n==========================")
+# Write a separate Privileges class. The class should have one
+# attribute, privileges , that stores a list of strings as described in Exercise 9-7.
+# Move the show_privileges() method to this class. Make a Privileges instance
+# as an attribute in the Admin class. Create a new instance of Admin and use your
+# method to show its privileges.
 class Privileges():
-    def __init__(self, first_name, last_name, username, gender):
-        self.privs = ["can add post", "can delete post",
+    def __init__(self, privileges)
+    # def __init__(self, first_name, last_name, username, gender):
+        self.privileges = ["can add post", "can delete post",
         "can add user", "can ban user"]
 
     def show_privileges(self):
         print(f"Admin privileges include:")
-        for privilege in self.privs:
+        for privilege in self.privileges:
             print(f"- {privilege}")
 
-rosa98 = Privileges("Rosa", "Line", "rosal_su", "female")
+rosa98 = Admin("Rosa", "Line", "rosal_su", "female")
 rosa98.show_privileges()
-
+# rosa98.greet_user()
+# rosa98.describe_user()
