@@ -1,5 +1,5 @@
 def thewordcount(filepath):
-    """This function counts all words in a txt file."""
+    """This function counts all instances of "the " in a txt file."""
     try:
         with open(filepath, encoding='utf-8') as f:
             contents = f.read()
