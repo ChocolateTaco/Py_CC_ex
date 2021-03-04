@@ -6,9 +6,11 @@ class Employee:
         self.lastname = lastname
         self.annual_salary = annual_salary
 
-    def give_raise(self, raise=5000):
-        self.annual_salary += self.raise            # Still have to work on this method. Getting errors
-
+    def give_raise(self, raise_amt):
+        if raise_amt:
+            self.annual_salary += 5000            # Still have to work on this method. Getting errors
+        else:
+            self.annual_salary += raise_amt
 
 emp1 = Employee('Regis', 'Kelly', 12000)
 print(emp1.firstname)

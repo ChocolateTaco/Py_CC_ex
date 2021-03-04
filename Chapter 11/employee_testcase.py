@@ -15,7 +15,7 @@ class TestEmployee(unittest.TestCase):
         self.emp1.give_raise()
         # self.assertEqual(self.emp1.firstname, 'George')
         # self.assertEqual(self.emp1.lastname, 'Lopez')
-        self.assertEqual(self.emp1.annual_salary, 55000)
+        self.assertEqual(self.emp1.annual_salary, 50000)
 
     # def test_give_custom_raise(self):
     #     """Gives an employee a custom raise amount."""
