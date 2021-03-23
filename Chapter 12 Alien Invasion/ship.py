@@ -9,11 +9,23 @@ class Ship:
         self.screen_rect = ai_game.screen.get_rect()
 
         # Load the ship image and get its rect.
-        self.image = pygame.image.load('/home/odin/Documents/Python_Zone/Py_CC_ex/Chapter 12 Alien Invasion/images/ship.bmp')   # assigns self image and image
+        # self.image = pygame.image.load('/home/odin/Documents/Python_Zone/Py_CC_ex/Chapter 12 Alien Invasion/images/ship.bmp')   # assigns self image and image
+        self.image = pygame.image.load('/home/odin/Documents/Python_Zone/Py_CC_ex/Chapter 12 Alien Invasion/images/rockman.png')   # 12-2 Game Character
         self.rect = self.image.get_rect()                   # ship surface's rectangular attributes
 
         # Start each new ship at the bottom center of the screen.
         self.rect.midbottom = self.screen_rect.midbottom
+
+        # Movement flag
+        self.moving_right = False
+        self.moving_left = False
+
+    def update(self):
+        """Update the ship's position based on the movement flags."""
+        if self.moving_right:
+            self.rect.x += 1
+        if self.moving_left:
+            self.rect.x -= 1
 
     def blitme(self):
         """Draw the ship at its current location."""
