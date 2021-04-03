@@ -3,6 +3,7 @@ import pygame
 
 from settings import Settings
 from ship import Ship
+from bullet import Bullet
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -24,6 +25,7 @@ class AlienInvasion:
         pygame.display.set_caption("Alien Invasion")
 
         self.ship = Ship(self)
+        self.bullets = pygame.sprite.Group()
 
         # Set the background color (RGB)
         # self.bg_color = (230, 230, 230)
@@ -34,6 +36,7 @@ class AlienInvasion:
         while True:
             self._check_events()    # detects relevant key/mouse events
             self.ship.update()      # updates the ship's location
+            self.bullets.update()   # updates all bullets position
             self._update_screen()   # redraws the screen on each pass of main loop
 
     def _check_events(self):
@@ -62,6 +65,8 @@ class AlienInvasion:
             self.ship.moving_down = True
         elif event.key == pygame.K_q:  # Exits alien_invasion.py if Q is pressed
             sys.exit()
+        elif event.key == pygame.K_SPACE:
+            self._fire_bullet()
             
     def _check_keyup_events(self, event):
         """Responds to key releases."""
@@ -75,13 +80,19 @@ class AlienInvasion:
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = False
 
+    def _fire_bullet(self):
+        """Create a new bullet and ADDS it to the bullets group."""
+        new_bullet = Bullet(self)
+        self.bullets.add(new_bullet)
+
     def _update_screen(self):
-            # Redraw the screen during each pass through the loop.
-            self.screen.fill(self.settings.bg_color)
-            self.ship.blitme()
-        
-            # Make the most recently drawn screen visible.
-            pygame.display.flip()
+        # Redraw the screen during each pass through the loop.
+        self.screen.fill(self.settings.bg_color)
+        self.ship.blitme()
+        for bullet in self.bullets.sprites():
+            bullet.draw_bullet()
+        # Make the most recently drawn screen visible.
+        pygame.display.flip()
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
