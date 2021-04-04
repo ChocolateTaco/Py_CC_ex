@@ -95,7 +95,7 @@ class SidewayShooter:
         for bullet in self.bullets.copy():
             if bullet.rect.left > self.settings.screen_width:
                 self.bullets.remove(bullet)
-        print(len(self.bullets))        # prints # of bullets on screen for debugging
+        # print(len(self.bullets))        # prints # of bullets on screen for debugging
 
     def _update_screen(self):
         # Redraw the screen during each pass through the loop.

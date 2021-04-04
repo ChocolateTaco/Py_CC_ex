@@ -6,11 +6,11 @@ class Settings:
         # Screen settings
         self.screen_width = 1200
         self.screen_height = 800
-        # self.bg_color = (230, 230, 230)     # tuple due to ()
-        self.bg_color = (135, 206, 235)     # 12-1 blue sky color
+        self.bg_color = (230, 230, 230)     # tuple due to ()
+        # self.bg_color = (135, 206, 235)     # 12-1 blue sky color
 
         # Ship settings
-        self.ship_speed = 1.2   # sets the pixels to 1.5
+        self.ship_speed = 1.0   # sets the pixels to 1.5
         
         # Bullet settings
         self.bullet_speed = 1.0

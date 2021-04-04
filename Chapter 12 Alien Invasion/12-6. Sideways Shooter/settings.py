@@ -10,7 +10,7 @@ class Settings:
         # self.bg_color = (135, 206, 235)     # 12-1 blue sky color
 
         # Ship settings
-        self.ship_speed = .65   # sets the pixels to 1.5
+        self.ship_speed = .5   # sets the pixels to 1.5
         
 
         # Bullet settings

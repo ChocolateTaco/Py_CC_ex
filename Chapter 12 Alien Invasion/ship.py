@@ -10,8 +10,8 @@ class Ship:
         self.screen_rect = ai_game.screen.get_rect()
 
         # Load the ship image and get its rect.
-        # self.image = pygame.image.load('/home/odin/Documents/Python_Zone/Py_CC_ex/Chapter 12 Alien Invasion/images/ship.bmp')   # assigns self image and image
-        self.image = pygame.image.load('/home/odin/Documents/Python_Zone/Py_CC_ex/Chapter 12 Alien Invasion/images/rockman.png')   # 12-2 Game Character
+        self.image = pygame.image.load('/home/odin/Documents/Python_Zone/Py_CC_ex/Chapter 12 Alien Invasion/images/ship.bmp')   # assigns self image and image
+        # self.image = pygame.image.load('/home/odin/Documents/Python_Zone/Py_CC_ex/Chapter 12 Alien Invasion/images/rockman.png')   # 12-2 Game Character
         self.rect = self.image.get_rect()     # ship surface's rectangular attributes
 
         # Start each new ship at the bottom center of the screen.
