@@ -6,6 +6,8 @@ from settings import Settings
 from ship import Ship
 from bullet import Bullet
 from alien import Alien
+from star import Star
+from random import randint
 
 class AlienInvasion:
     """Overall class to manage game assets and behavior."""
@@ -29,9 +31,10 @@ class AlienInvasion:
         self.ship = Ship(self)
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
+        self.stars = pygame.sprite.Group()
 
         self._create_fleet()
-
+        self._create_stars()
         # Set the background color (RGB)
         # self.bg_color = (230, 230, 230)
 
@@ -109,6 +112,7 @@ class AlienInvasion:
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.aliens.draw(self.screen)   # Pygame draws each element at the pos defined by its rect attribute.
+        self.stars.draw(self.screen)   # Pygame draws each element at the pos defined by its rect attribute.
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
@@ -138,6 +142,34 @@ class AlienInvasion:
         alien.rect.x = alien.x
         alien.rect.y = alien.rect.height + 2 * alien.rect.height * row_number
         self.aliens.add(alien)
+
+# Below is the fleet of Stars from Exercise 13-1 and 13-2.
+    def _create_stars(self):
+        """Create the fleet of stars."""
+        # Make an star.
+        star = Star(self)
+        star_width, star_height = star.rect.size
+        available_space_x = self.settings.screen_width - (3 * star_width)  # 2 b/c star + star space
+        number_stars_x = available_space_x // (2 * star_width)
+        
+        # Determine the number of rows of stars that fit on the screen.
+        ship_height = self.ship.rect.height
+        available_space_y = (self.settings.screen_height - (3 * star_height) - ship_height)
+        number_rows = available_space_y // (2 * star_height)
+        
+        # Create the full fleet of stars.
+        for row_number in range(number_rows):    
+            for star_number in range(number_stars_x):
+                self._create_star(star_number, row_number)
+
+    def _create_star(self, star_number, row_number):
+        # Create an star and place it in the row.
+        star = Star(self)
+        star_width, star_height = star.rect.size
+        star.x = star_width + 2 * star_width * star_number
+        star.rect.x = star.x + randint(-50, 100)
+        star.rect.y = star.rect.height + 2 * star.rect.height * row_number + randint(-50, 50)
+        self.stars.add(star)
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
