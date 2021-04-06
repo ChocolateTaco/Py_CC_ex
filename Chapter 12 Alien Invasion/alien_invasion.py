@@ -45,6 +45,7 @@ class AlienInvasion:
             self._check_events()    # detects relevant key/mouse events
             self.ship.update()      # updates the ship's location
             self._update_bullets()   # updates all bullets position
+            self._update_aliens()   # updates alien positions
             self._update_screen()   # redraws the screen on each pass of main loop
 
     def _check_events(self):
@@ -149,12 +150,12 @@ class AlienInvasion:
         # Make an star.
         star = Star(self)
         star_width, star_height = star.rect.size
-        available_space_x = self.settings.screen_width - (3 * star_width)  # 2 b/c star + star space
+        available_space_x = self.settings.screen_width - (2 * star_width)  # 2 b/c star + star space
         number_stars_x = available_space_x // (2 * star_width)
         
         # Determine the number of rows of stars that fit on the screen.
         ship_height = self.ship.rect.height
-        available_space_y = (self.settings.screen_height - (3 * star_height) - ship_height)
+        available_space_y = (self.settings.screen_height - (2 * star_height) - ship_height)
         number_rows = available_space_y // (2 * star_height)
         
         # Create the full fleet of stars.
@@ -167,9 +168,13 @@ class AlienInvasion:
         star = Star(self)
         star_width, star_height = star.rect.size
         star.x = star_width + 2 * star_width * star_number
-        star.rect.x = star.x + randint(-50, 100)
-        star.rect.y = star.rect.height + 2 * star.rect.height * row_number + randint(-50, 50)
+        star.rect.x = star.x + randint(-30, 30)
+        star.rect.y = star.rect.height + 2 * star.rect.height * row_number + randint(-30, 30)
         self.stars.add(star)
+
+    def _update_aliens(self):
+        """Update the positions of all aliens in the fleet."""
+        self.aliens.update()
 
 if __name__ == '__main__':
     # Make a game instance, and run the game.
