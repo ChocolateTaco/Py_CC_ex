@@ -49,6 +49,7 @@ class AlienInvasion:
             self.ship.update()      # updates the ship's location
             self._update_bullets()   # updates all bullets position
             self._update_aliens()   # updates alien positions
+            self._update_raindrops  # updates raindrops position
             self._update_screen()   # redraws the screen on each pass of main loop
 
     def _check_events(self):
@@ -216,6 +217,26 @@ class AlienInvasion:
         raindrop.rect.x = raindrop.x + randint(-30, 30)
         raindrop.rect.y = raindrop.rect.height + 2 * raindrop.rect.height * row_number + randint(-30, 30)
         self.raindrops.add(raindrop)
+
+    def _check_raindrop_edges(self):
+        """Respond appropriately if any aliens have reached an edge."""
+        for raindrop in self.raindrops.sprites():
+            if raindrop.check_rain_edges():
+                self._drop_raindrop()
+                break
+
+    def _drop_raindrop(self):
+        """Drop the entire fleet and change the fleet's direction."""
+        for raindrop in self.raindrops.sprites():
+            raindrop.rect.y += self.settings.raindrop_drop_speed
+        # self.settings.fleet_direction *= -1
+
+    def _update_raindrops(self):
+        """Check if the fleet is at an edge, 
+        then update the positions of all aliens in the fleet.
+        """
+        self._check_raindrop_edges
+        self.raindrops.update()
 
     def _update_aliens(self):
         """Check if the fleet is at an edge, 
