@@ -7,6 +7,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from star import Star
+from rain import Raindrop
 from random import randint
 
 class AlienInvasion:
@@ -32,9 +33,11 @@ class AlienInvasion:
         self.bullets = pygame.sprite.Group()
         self.aliens = pygame.sprite.Group()
         self.stars = pygame.sprite.Group()
+        self.raindrops = pygame.sprite.Group()
 
         self._create_fleet()
         self._create_stars()
+        self._create_raindrops()
         # Set the background color (RGB)
         # self.bg_color = (230, 230, 230)
 
@@ -114,6 +117,7 @@ class AlienInvasion:
             bullet.draw_bullet()
         self.aliens.draw(self.screen)   # Pygame draws each element at the pos defined by its rect attribute.
         self.stars.draw(self.screen)   # Pygame draws each element at the pos defined by its rect attribute.
+        self.raindrops.draw(self.screen)   # Pygame draws each element at the pos defined by its rect attribute.
         # Make the most recently drawn screen visible.
         pygame.display.flip()
 
@@ -184,6 +188,34 @@ class AlienInvasion:
         star.rect.x = star.x + randint(-30, 30)
         star.rect.y = star.rect.height + 2 * star.rect.height * row_number + randint(-30, 30)
         self.stars.add(star)
+
+# Below is the fleet of raindrops from Exercise 13-3 and 13-4.
+    def _create_raindrops(self):
+        """Create the fleet of raindrops."""
+        # Make a raindrop.
+        raindrop = Raindrop(self)
+        raindrop_width, raindrop_height = raindrop.rect.size
+        available_space_x = self.settings.screen_width - (2 * raindrop_width)  # 2 b/c raindrop + raindrop space
+        number_raindrops_x = available_space_x // (2 * raindrop_width)
+        
+        # Determine the number of rows of raindrops that fit on the screen.
+        ship_height = self.ship.rect.height
+        available_space_y = (self.settings.screen_height - (2 * raindrop_height) - ship_height)
+        number_rows = available_space_y // (2 * raindrop_height)
+        
+        # Create the full fleet of raindrops.
+        for row_number in range(number_rows):    
+            for raindrop_number in range(number_raindrops_x):
+                self._create_raindrop(raindrop_number, row_number)
+
+    def _create_raindrop(self, raindrop_number, row_number):
+        # Create a raindrop and place it in the row.
+        raindrop = Raindrop(self)
+        raindrop_width, raindrop_height = raindrop.rect.size
+        raindrop.x = raindrop_width + 2 * raindrop_width * raindrop_number
+        raindrop.rect.x = raindrop.x + randint(-30, 30)
+        raindrop.rect.y = raindrop.rect.height + 2 * raindrop.rect.height * row_number + randint(-30, 30)
+        self.raindrops.add(raindrop)
 
     def _update_aliens(self):
         """Check if the fleet is at an edge, 
