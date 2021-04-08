@@ -27,6 +27,4 @@ class Settings:
 
         # Raindrop settings
         self.raindrop_speed = 1.0
-        self.raindrop_drop_speed = 10
-        # fleet_direction of 1 = moves right; -1 moves left.
-        self.rain_direction = 1        
+        self.raindrop_drop_speed = 10     

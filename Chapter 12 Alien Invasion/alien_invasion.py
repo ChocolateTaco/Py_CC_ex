@@ -7,7 +7,7 @@ from ship import Ship
 from bullet import Bullet
 from alien import Alien
 from star import Star
-from rain import Raindrop
+from raindrop import Raindrop
 from random import randint
 
 class AlienInvasion:
@@ -214,16 +214,16 @@ class AlienInvasion:
         raindrop = Raindrop(self)
         raindrop_width, raindrop_height = raindrop.rect.size
         raindrop.x = raindrop_width + 2 * raindrop_width * raindrop_number
-        raindrop.rect.x = raindrop.x + randint(-30, 30)
-        raindrop.rect.y = raindrop.rect.height + 2 * raindrop.rect.height * row_number + randint(-30, 30)
+        raindrop.rect.x = raindrop.x # + randint(-30, 30)
+        raindrop.rect.y = raindrop.rect.height + 2 * raindrop.rect.height * row_number # + randint(-30, 30)
         self.raindrops.add(raindrop)
 
-    def _check_raindrop_edges(self):
-        """Respond appropriately if any aliens have reached an edge."""
-        for raindrop in self.raindrops.sprites():
-            if raindrop.check_rain_edges():
-                self._drop_raindrop()
-                break
+    # def _check_raindrop_edges(self):
+    #     """Respond appropriately if any aliens have reached an edge."""
+    #     for raindrop in self.raindrops.sprites():
+    #         if raindrop.check_rain_edges():
+    #             self._drop_raindrop()
+    #             break
 
     def _drop_raindrop(self):
         """Drop the entire fleet and change the fleet's direction."""
@@ -235,7 +235,8 @@ class AlienInvasion:
         """Check if the fleet is at an edge, 
         then update the positions of all aliens in the fleet.
         """
-        self._check_raindrop_edges
+        # self._check_raindrop_edges()
+        # self._drop_raindrop()
         self.raindrops.update()
 
     def _update_aliens(self):

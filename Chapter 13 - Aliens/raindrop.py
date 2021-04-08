@@ -8,8 +8,9 @@ class Raindrop(Sprite):
         """Initialize the raindrop and set its starting position."""
         super().__init__()
         self.screen = ai_game.screen
+        self.settings = ai_game.settings
 
-        # Load the alien image and set its rect attribute.
+        # Load the raindrop image and set its rect attribute.
         self.image = pygame.image.load('/home/odin/Documents/Python_Zone/Py_CC_ex/Chapter 13 - Aliens/images/water.png')
         self.rect = self.image.get_rect()
 
@@ -17,16 +18,16 @@ class Raindrop(Sprite):
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
 
-        # Store the alien's exact veritcal position.
+        # Store the raindrop's exact veritcal position.
         self.y = float(self.rect.y)
 
     def check_rain_edges(self):
         """Return True if raindrops are at the edge of screen."""
         screen_rect = self.screen.get_rect()
-        if self.rect.bottom <= screen_rect.bottom:
+        if self.rect.bottom < screen_rect.bottom:
             return True
 
     def update(self):
         """Move the rain to the bottom."""
-        self.y += (self.settings.raindrop_speed)
-        self.rect.x = self.x
+        self.y += self.settings.raindrop_speed
+        self.rect.y = self.y
