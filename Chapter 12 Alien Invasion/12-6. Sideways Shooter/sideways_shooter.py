@@ -1,3 +1,4 @@
+# %%
 import sys
 import pygame
 
@@ -103,14 +104,19 @@ class SidewayShooter:
 
     def _create_fleet(self):
         """Create the fleet of alien ships."""
+
         # Make an alien.
         alien = Alien(self)
         self.aliens.add(alien)
+        
+# available_space_x = settings.screen_width - (2 * alien_width)
+# number_aliens_x = available_space_x // (2 * alien_width)
 
     def _update_screen(self):
         # Redraw the screen during each pass through the loop.
         self.screen.fill(self.settings.bg_color)
         self.ship.blitme()
+        self.aliens.update()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
         self.aliens.draw(self.screen)
@@ -121,3 +127,4 @@ if __name__ == '__main__':
     # Make a game instance, and run the game.
     ss = SidewayShooter()
     ss.run_game()
+# %%
